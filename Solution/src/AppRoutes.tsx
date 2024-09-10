@@ -5,7 +5,7 @@ import { Hotels } from './pages/Hotels';
 import { Guests } from './pages/Guests';
 import { NotFoundPage } from './pages/NotFoundPage';
 
-export const App = () => {
+export const AppRoutes = () => {
   return (
     <div className='h-100'>
       <div className='d-flex flex-column h-100'>

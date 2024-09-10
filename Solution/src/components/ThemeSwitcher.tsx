@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 
 export const ThemeSwitcher = () => {
-  const [activeTheme, setActiveTheme] = useState<'light' | 'dark'>('light');
+  const [activeTheme, setActiveTheme] = useState<'light' | 'dark'>('dark');
 
   useEffect(() => {
     document.body.setAttribute('data-bs-theme', activeTheme);

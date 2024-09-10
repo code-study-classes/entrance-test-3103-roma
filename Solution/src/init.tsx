@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 import { initReactI18next, I18nextProvider } from 'react-i18next';
 import resources from './locales/index';
-import { App } from './App';
+import { AppRoutes } from './AppRoutes';
 
 export const Init = () => {
   const lng = localStorage.getItem('lng') || 'ru';
@@ -17,7 +17,7 @@ export const Init = () => {
 
   return (
     <I18nextProvider i18n={i18n}>
-      <App />
+      <AppRoutes />
     </I18nextProvider>
   );
 };

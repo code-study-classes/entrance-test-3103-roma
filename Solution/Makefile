@@ -1,4 +1,4 @@
-setup: install build
+setup: install prepare
 
 install:
 	npm ci
@@ -15,3 +15,6 @@ lint:
 fix:
 	npx prettier . --write
 	npx eslint --fix .
+
+prepare:
+	npm run prepare

@@ -1,19 +1,13 @@
 import { observer } from 'mobx-react-lite';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Card, Col, Container, Row } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 import { bookingStore } from '../stores/bookingStore';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
-import { getRoutes } from '../routes';
 
 export const HotelPage = observer(() => {
   const { pathname } = useLocation();
-  const navigate = useNavigate();
-  const hotel = bookingStore.getHotel(pathname[1]);
+  const hotelID = pathname.replace('/', '');
+  const hotel = bookingStore.getHotel(hotelID);
   const rooms = bookingStore.getRoomsByHotelID(hotel.id);
-
-  const makeBooking = (roomID: string) => {
-    bookingStore.changeRoomStatus(roomID);
-    navigate(getRoutes.hotelsPagePath());
-  };
 
   return (
     <Container className='h-100 my-4'>
@@ -36,11 +30,6 @@ export const HotelPage = observer(() => {
                   <Card.Text className={`${room.status === 'Свободен' ? 'text-success' : 'text-danger'}`}>
                     {room.status}
                   </Card.Text>
-                  {room.status === 'Свободен' && (
-                    <Button onClick={() => makeBooking(room.id)} size='sm' variant='outline-success'>
-                      Забронировать
-                    </Button>
-                  )}
                 </div>
               </Card.Body>
             </Card>

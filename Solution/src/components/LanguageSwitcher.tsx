@@ -5,7 +5,7 @@ export const LanguageSwitcher = () => {
   const { t, i18n } = useTranslation('header');
   const currentLanguage = i18n.language;
 
-  const handleSwitch = (lng: string) => {
+  const toggleLanguage = (lng: string) => {
     localStorage.setItem('lng', lng);
     i18n.changeLanguage(lng);
   };
@@ -17,8 +17,8 @@ export const LanguageSwitcher = () => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item onClick={() => handleSwitch('ru')}>{t('ru')}</Dropdown.Item>
-        <Dropdown.Item onClick={() => handleSwitch('en')}>{t('en')}</Dropdown.Item>
+        <Dropdown.Item onClick={() => toggleLanguage('ru')}>{t('ru')}</Dropdown.Item>
+        <Dropdown.Item onClick={() => toggleLanguage('en')}>{t('en')}</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

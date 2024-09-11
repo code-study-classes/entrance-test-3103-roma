@@ -1,4 +1,6 @@
 export const getRoutes = {
   hotelsPagePath: () => '/',
-  guestsPagePath: () => '/guests',
+  hotelPagePath: (id: string) => `/${id}`,
+  createHotelPagePath: () => '/create',
+  bookingPagePath: () => '/booking',
 };

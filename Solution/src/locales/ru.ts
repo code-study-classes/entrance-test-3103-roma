@@ -1,9 +1,11 @@
 export const ru = {
   header: {
     hotels: 'Отели',
-    guests: 'Гости',
+    booking: 'Бронировать',
     ru: 'Русский',
     en: 'English',
   },
+  buttons: {
+    createHotel: 'Создать отель',
+  },
 } as const;
-

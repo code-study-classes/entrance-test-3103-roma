@@ -14,8 +14,8 @@ export const Header = () => {
         <Navbar.Brand as={Link} to={getRoutes.hotelsPagePath()}>
           {t('hotels')}
         </Navbar.Brand>
-        <Navbar.Brand as={Link} to={getRoutes.guestsPagePath()}>
-          {t('guests')}
+        <Navbar.Brand as={Link} to={getRoutes.bookingPagePath()}>
+          {t('booking')}
         </Navbar.Brand>
         <Navbar.Collapse>
           <ThemeSwitcher />

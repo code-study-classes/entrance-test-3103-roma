@@ -1,7 +1,9 @@
-export const NotFoundPage = () => {
+import { observer } from 'mobx-react-lite';
+
+export const NotFoundPage = observer(() => {
   return (
-    <div className='404'>
+    <div className='text-center'>
       <h1>404</h1>
     </div>
   );
-};
+});

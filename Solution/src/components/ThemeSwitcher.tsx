@@ -1,22 +1,23 @@
-import { useState, useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 import { Button } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
 
-export const ThemeSwitcher = () => {
-  const [activeTheme, setActiveTheme] = useState<'light' | 'dark'>('dark');
+export const ThemeSwitcher = observer(() => {
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
 
   useEffect(() => {
-    document.body.setAttribute('data-bs-theme', activeTheme);
-    document.body.classList.remove('bg-light', 'bg-dark');
-    document.body.classList.add(activeTheme === 'dark' ? 'bg-dark' : 'bg-light');
-  }, [activeTheme]);
+    document.body.setAttribute('data-bs-theme', theme);
+    document.body.classList.remove(theme === 'dark' ? 'bg-light' : 'bg-dark');
+    document.body.classList.add(theme === 'dark' ? 'bg-dark' : 'bg-light');
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   const toggleTheme = () => {
-    setActiveTheme(prevTheme => (prevTheme === 'dark' ? 'light' : 'dark'));
+    setTheme(prevTheme => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
-
   return (
-    <Button variant={activeTheme} onClick={toggleTheme}>
-      {activeTheme === 'dark' ? <i className='bi bi-moon-stars-fill'></i> : <i className='bi bi-sun'></i>}
+    <Button variant={theme} onClick={toggleTheme}>
+      {theme === 'dark' ? <i className='bi bi-moon-stars-fill'></i> : <i className='bi bi-sun'></i>}
     </Button>
   );
-};
+});
